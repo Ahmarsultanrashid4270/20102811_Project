@@ -1,5 +1,6 @@
 const url = "http://127.0.0.1:5000/animals";
 let animals = [];
+let editId = 0;
 function addAnimal() {
 
     let animal= { 
@@ -67,6 +68,26 @@ function showAnimals() {
         document.getElementById("animals").innerHTML = rows;
 
     });
+
+}
+
+function editAnimal(id){
+
+    editId = id;
+
+    let animal = animals.find(function(a){
+        return a.id == id;
+    });
+
+    document.getElementById("animal_id").value = animal.animal_id;
+    document.getElementById("name").value = animal.name;
+    document.getElementById("species").value = animal.species;
+    document.getElementById("breed").value = animal.breed;
+    document.getElementById("age").value = animal.age;
+    document.getElementById("gender").value = animal.gender;
+    document.getElementById("status").value = animal.status;
+
+    document.getElementById("saveBtn").innerHTML = "Update Animal";
 
 }
 
