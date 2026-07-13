@@ -104,5 +104,16 @@ function deleteAnimal(id){
 
 }
 
+function clearData(){
+
+    document.getElementById("animal_id").value = "";
+    document.getElementById("name").value = "";
+    document.getElementById("species").value = "";
+    document.getElementById("breed").value = "";
+    document.getElementById("age").value = "";
+    document.getElementById("gender").value = "";
+    document.getElementById("status").value = "";
+
+}
 
 
