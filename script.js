@@ -49,7 +49,7 @@ function addAnimal() {
 
             document.getElementById("saveBtn").innerHTML = "Add Animal";
 
-            clearData();
+        
             showAnimals();
             alert("Animal updated successfully!");
 
