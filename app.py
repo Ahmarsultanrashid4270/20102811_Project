@@ -39,3 +39,7 @@ def add_animal():
     conn.close()
  
     return jsonify({"message":"Animal Added"})
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
+    

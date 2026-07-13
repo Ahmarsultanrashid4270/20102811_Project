@@ -22,8 +22,8 @@ function addAnimal() {
         })
         .then(function(){
 
-            clearData();
-            showAnimals();
+           alert("Animal Added Successfully");
+            
 
         });
 
