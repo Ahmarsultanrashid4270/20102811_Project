@@ -30,6 +30,8 @@ function addAnimal() {
     
 }
 
+showAnimals();
+
 function showAnimals() {
 
     fetch(url)
