@@ -11,4 +11,7 @@ function addAnimal() {
         status: document.getElementById("status").value
 
     };
+    Console.log(animal);
+}
+
 
