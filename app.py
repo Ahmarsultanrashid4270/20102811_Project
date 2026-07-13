@@ -40,6 +40,41 @@ def add_animal():
  
     return jsonify({"message":"Animal Added"})
 
+
+@app.route("/animals", methods=["GET"])
+def get_animals():
+ 
+    conn = sqlite3.connect("database.db")
+    conn.row_factory = sqlite3.Row
+ 
+    cur = conn.cursor()
+ 
+    cur.execute("SELECT * FROM animals")
+ 
+    rows = cur.fetchall()
+ 
+    conn.close()
+ 
+    data = []
+ 
+    for row in rows:
+ 
+        data.append({
+            "id": row["id"],
+            "animal_id": row["animal_id"],
+            "name": row["name"],
+            "species": row["species"],
+            "breed": row["breed"],
+            "age": row["age"],
+            "gender": row["gender"],
+            "status": row["status"]
+        })
+ 
+    return jsonify(data)
+ 
+ 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
+
+
     
