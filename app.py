@@ -100,6 +100,22 @@ def update_animal(id):
     conn.close()
  
     return jsonify({"message":"Animal Updated"})
+
+@app.route("/animals/<int:id>", methods=["DELETE"])
+def delete_animal(id):
+ 
+    conn = sqlite3.connect("database.db")
+ 
+    cur = conn.cursor()
+ 
+    cur.execute("DELETE FROM animals WHERE id=?", (id,))
+ 
+    conn.commit()
+ 
+    conn.close()
+ 
+    return jsonify({"message":"Animal Deleted"})
+ 
  
 
 if __name__ == "__main__":
