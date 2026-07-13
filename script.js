@@ -11,7 +11,21 @@ function addAnimal() {
         status: document.getElementById("status").value
 
     };
-    Console.log(animal);
+     fetch(url,{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(animal)
+        })
+        .then(function(){
+
+            clearData();
+            showAnimals();
+
+        });
+
+    
 }
 
 
