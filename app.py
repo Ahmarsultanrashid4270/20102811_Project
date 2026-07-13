@@ -10,33 +10,32 @@ def add_cors_headers(response):
     response.headers["Access-Control-Allow-Headers"] = "Content-Type"
     return response
 
-@app.route("/animals", methods=["GET"])
-def get_animals():
+
+
+@app.route("/animals", methods=["POST"])
+def add_animal():
+ 
+    data = request.get_json()
  
     conn = sqlite3.connect("database.db")
-    conn.row_factory = sqlite3.Row
  
     cur = conn.cursor()
  
-    cur.execute("SELECT * FROM animals")
+    cur.execute(
+        "INSERT INTO animals(animal_id,name,species,breed,age,gender,status) VALUES(?,?,?,?,?,?,?)",
+        (
+            data["animal_id"],
+            data["name"],
+            data["species"],
+            data["breed"],
+            data["age"],
+            data["gender"],
+            data["status"]
+        )
+    )
  
-    rows = cur.fetchall()
+    conn.commit()
  
     conn.close()
  
-    data = []
- 
-    for row in rows:
- 
-        data.append({
-            "id": row["id"],
-            "animal_id": row["animal_id"],
-            "name": row["name"],
-            "species": row["species"],
-            "breed": row["breed"],
-            "age": row["age"],
-            "gender": row["gender"],
-            "status": row["status"]
-        })
- 
-    return jsonify(data)
+    return jsonify({"message":"Animal Added"})
