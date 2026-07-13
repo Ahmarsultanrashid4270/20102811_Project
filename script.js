@@ -29,6 +29,7 @@ function addAnimal() {
 
             clearData();
             showAnimals();
+            alert("Animal added successfully!");
 
         });
 
@@ -50,6 +51,7 @@ function addAnimal() {
 
             clearData();
             showAnimals();
+            alert("Animal updated successfully!");
 
         });
 
@@ -127,6 +129,8 @@ function deleteAnimal(id){
     .then(function(){
 
         showAnimals();
+        clearData();
+        alert("Animal deleted successfully!");
 
     });
 
