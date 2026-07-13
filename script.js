@@ -1,6 +1,7 @@
 const url = "http://127.0.0.1:5000/animals";
 let animals = [];
 let editId = 0;
+
 function addAnimal() {
 
     let animal= { 
@@ -14,7 +15,10 @@ function addAnimal() {
         status: document.getElementById("status").value
 
     };
-     fetch(url,{
+    
+     if(editId == 0){
+
+        fetch(url,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
@@ -23,10 +27,34 @@ function addAnimal() {
         })
         .then(function(){
 
-           alert("Animal Added Successfully");
-            
+            clearData();
+            showAnimals();
 
         });
+
+    }
+    else{
+
+        fetch(url + "/" + editId,{
+            method:"PUT",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(animal)
+        })
+        .then(function(){
+
+            editId = 0;
+
+            document.getElementById("saveBtn").innerHTML = "Add Animal";
+
+            clearData();
+            showAnimals();
+
+        });
+
+    }
+
 
     
 }
