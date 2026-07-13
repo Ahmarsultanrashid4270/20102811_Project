@@ -30,4 +30,42 @@ function addAnimal() {
     
 }
 
+function showAnimals() {
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+
+        animals = data;
+
+        let rows = "";
+
+        data.forEach(function(animal){
+
+            rows += `
+            <tr>
+                <td>${animal.id}</td>
+                <td>${animal.animal_id}</td>
+                <td>${animal.name}</td>
+                <td>${animal.species}</td>
+                <td>${animal.breed}</td>
+                <td>${animal.age}</td>
+                <td>${animal.gender}</td>
+                <td>${animal.status}</td>
+                <td>
+                    <button onclick="editAnimal(${animal.id})">Edit</button>
+
+                    <button onclick="deleteAnimal(${animal.id})">Delete</button>
+                </td>
+            </tr>
+            `;
+
+        });
+
+        document.getElementById("animals").innerHTML = rows;
+
+    });
+
+}
+
 
