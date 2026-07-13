@@ -71,8 +71,37 @@ def get_animals():
         })
  
     return jsonify(data)
+
+@app.route("/animals/<int:id>", methods=["PUT"])
+def update_animal(id):
  
+    data = request.get_json()
  
+    conn = sqlite3.connect("database.db")
+ 
+    cur = conn.cursor()
+ 
+    cur.execute(
+        "UPDATE animals SET animal_id=?,name=?,species=?,breed=?,age=?,gender=?,status=? WHERE id=?",
+        (
+            data["animal_id"],
+            data["name"],
+            data["species"],
+            data["breed"],
+            data["age"],
+            data["gender"],
+            data["status"],
+            id
+        )
+    )
+ 
+    conn.commit()
+ 
+    conn.close()
+ 
+    return jsonify({"message":"Animal Updated"})
+ 
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
 
