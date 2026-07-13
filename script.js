@@ -91,4 +91,18 @@ function editAnimal(id){
 
 }
 
+function deleteAnimal(id){
+
+    fetch(url + "/" + id,{
+        method:"DELETE"
+    })
+    .then(function(){
+
+        showAnimals();
+
+    });
+
+}
+
+
 
