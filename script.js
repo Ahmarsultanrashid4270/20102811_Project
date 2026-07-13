@@ -1,4 +1,5 @@
-const url = "http://127.0.0.1:5000/animals";
+
+const url = "/animals";
 let animals = [];
 let editId = 0;
 
