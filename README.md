@@ -108,3 +108,13 @@ Remove an animal record.
 Conclusion
 
 This project demonstrates a simple information system for an animal shelter. It allows users to perform CRUD operations through a web interface while storing data in an SQLite database using a Flask REST API.
+
+## References
+
+I used the following resources while working on this project:
+W3Schools - For Html Table Creation
+https://www.w3schools.com/html/html_tables.asp
+SQLite Tutorial - Insert Data: https://www.sqlitetutorial.net/sqlite-python/insert/
+SQLite Tutorial - Creating Tables: https://www.sqlitetutorial.net/sqlite-python/creating-tables/
+For Python Request Handling:
+https://flask.palletsprojects.com/en/stable/quickstart/
